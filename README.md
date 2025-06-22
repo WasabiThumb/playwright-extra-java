@@ -51,7 +51,9 @@ artifact, in the form ``<base major>.<base minor>.<extra minor>.<extra patch>``.
 of ``playwright``, this library will also have a new patch release on best-effort basis.
 
 ## Plugin API
-A list of plugin events may be found in the ``PluginDispatch`` class.
+A list of plugin events may be found in the 
+[``PluginDispatch``](https://github.com/WasabiThumb/playwright-extra-java/blob/ed1a72161ac3569d3a39edbaea7f50f2fdff826e/src/main/java/io/github/wasabithumb/playwright/plugin/dispatch/PluginDispatch.java#L11)
+class.
 Proper documentation in progress.
 
 ## License

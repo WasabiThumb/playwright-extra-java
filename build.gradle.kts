@@ -1,3 +1,4 @@
+import com.vanniktech.maven.publish.SonatypeHost
 
 val baseMinorVersion: Int = 52
 val basePatchVersion: Int = 0
@@ -39,7 +40,10 @@ allprojects {
 
 plugins {
     id("java-library")
+    id("com.vanniktech.maven.publish") version "0.32.0"
 }
+
+description = "Modular plugin framework for Playwright"
 
 dependencies {
     api("com.microsoft.playwright:playwright:$baseVersion")
@@ -49,4 +53,34 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+mavenPublishing {
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+    signAllPublications()
+    coordinates("${project.group}", "playwright-extra", "${project.version}")
+    pom {
+        name.set("Playwright Extra")
+        description.set(project.description!!)
+        inceptionYear.set("2025")
+        url.set("https://github.com/WasabiThumb/playwright-extra-java")
+        licenses {
+            license {
+                name.set("The Apache License, Version 2.0")
+                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                distribution.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+            }
+        }
+        developers {
+            developer {
+                id.set("wasabithumb")
+                name.set("Xavier Pedraza")
+                url.set("https://github.com/WasabiThumb/")
+            }
+        }
+        scm {
+            url.set("https://github.com/WasabiThumb/playwright-extra-java/")
+            connection.set("scm:git:git://github.com/WasabiThumb/playwright-extra-java.git")
+        }
+    }
 }
